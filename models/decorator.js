@@ -20,9 +20,16 @@ Decorator.prototype.canPaint = function (room) {
     };
 }
 
+Decorator.prototype.emptyPaint = function() {
+    for (let paint of this.paintStock) {
+        paint.empty()
+    };
+}
+
 Decorator.prototype.paint = function (room) {
     if (this.canPaint(room) === true){
         room.paint()
+        this.emptyPaint()
     }
 }
 

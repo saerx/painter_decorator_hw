@@ -64,4 +64,28 @@ describe('Decorator', function () {
         // Assert
         assert.ok(smallRoom.painted)
     });
+
+    it("should be able to decrease amount of paint", function() {
+        // Arrange
+        // Act
+        decorator.addPaint(redPaint);
+        decorator.addPaint(bluePaint);
+        decorator.emptyPaint();
+        actual = decorator.paintStock[0].litres
+        actual = decorator.paintStock[1].litres
+        // Assert
+        assert.strictEqual(actual, 0)
+    });
+
+    it("should be able to decrease amount of paint when paingint", function() {
+        // Arrange
+        // Act
+        decorator.addPaint(redPaint);
+        decorator.addPaint(bluePaint);
+        decorator.paint(smallRoom);
+        actual = decorator.paintStock[0].litres
+        actual = decorator.paintStock[1].litres
+        // Assert
+        assert.strictEqual(actual, 0)
+    });
 })
