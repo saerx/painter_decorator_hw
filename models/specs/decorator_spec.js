@@ -71,21 +71,31 @@ describe('Decorator', function () {
         decorator.addPaint(redPaint);
         decorator.addPaint(bluePaint);
         decorator.emptyPaint();
-        actual = decorator.paintStock[0].litres
-        actual = decorator.paintStock[1].litres
+        actual = decorator.paintStock[0].isEmpty && decorator.paintStock[1].isEmpty
         // Assert
-        assert.strictEqual(actual, 0)
+        assert.ok(actual)
     });
 
-    it("should be able to decrease amount of paint when paingint", function() {
+    it("should be able to decrease amount of paint when painting", function() {
         // Arrange
         // Act
         decorator.addPaint(redPaint);
         decorator.addPaint(bluePaint);
         decorator.paint(smallRoom);
-        actual = decorator.paintStock[0].litres
-        actual = decorator.paintStock[1].litres
+        actual = decorator.paintStock[0].isEmpty && decorator.paintStock[1].isEmpty
         // Assert
-        assert.strictEqual(actual, 0)
+        assert.ok(actual)
+    });
+
+    it("should be able to remove empty paint cans", function() {
+        // Arrange
+        // Act
+        decorator.addPaint(redPaint);
+        decorator.addPaint(bluePaint);
+        decorator.paint(smallRoom);
+        decorator.removeEmpties();
+        actual = decorator.paintStock;
+        // Assert
+        assert.deepStrictEqual(actual, [])
     });
 })

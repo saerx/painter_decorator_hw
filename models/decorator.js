@@ -33,4 +33,13 @@ Decorator.prototype.paint = function (room) {
     }
 }
 
+Decorator.prototype.removeEmpties = function () {
+    for (let paint of this.paintStock) {
+        if (paint.isEmpty()) {
+            let pos = this.paintStock.indexOf(paint);
+            this.paintStock.splice(pos,1)
+        };
+    };
+}
+
 module.exports = Decorator;
